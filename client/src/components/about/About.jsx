@@ -8,7 +8,7 @@ export default function About() {
 
                 <div className="w3-third w3-margin-bottom">
                     <div className="w3-card-4">
-                        <img src={"https://softuni.bg/users/profile/showavatar/9a3a82bb-2d7b-4d3a-9834-b819e1791872"} alt={"John"} style={{width: '50%'}} />
+                        <img src={"/images/2149067224.jpg"} alt={"John"} style={{width: '75%'}} />
                         <div className="w3-container">
                             <h3>Jane Doe</h3>
                             <p className="w3-opacity">CEO & Founder</p>
