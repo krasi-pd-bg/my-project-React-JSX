@@ -1,7 +1,6 @@
 import React from 'react';
-import SlideShow from "../slideShow/SlideShow"
-import SlideShowNextPreviousButtons from '../slideShowNextPreviousButtons/SlideShowNextPreviousButtons';
-import GridWhatWeOffer from '../grid/Grid';
+import SlideShow from "../slide-show/SlideShow"
+import Grid from '../grid/Grid';
 
 export default function Content() {
 
@@ -9,15 +8,14 @@ export default function Content() {
 
 return (
     <>
-        <div className="w3-content" styles={" max-width: '1100px'; margin-top: '80px'; margin-bottom: '80px' "}>
+        <div className="w3-content">
 
             <div className="w3-panel" >
-                <h1><b>MARKETING</b></h1>
-                <p>Template by w3.css</p>
+                <h1><b>HANDY MAN  <h3>building repairs</h3></b></h1>
+                <p>we repear what your husband fixed</p>
                 <>
                     <SlideShow />
-                    <SlideShowNextPreviousButtons />
-                    <GridWhatWeOffer/>
+                    <Grid/>
                 </>
 
             </div>
