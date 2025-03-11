@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+
 import ordersApi from "../../api/orders-api.js";
 
 export default function CurrentOrder() {
@@ -49,6 +50,17 @@ export default function CurrentOrder() {
                         </li>
                     </ul>
                 </div >
+                <div className="buttons">
+                    <button>
+                        <a href={`/edit-order/${order._id}`}>Edit</a>
+                    </button>
+                    <button>
+                        <a href={`/delete-order/${order._id}`}>Delete</a>
+                    </button>
+                    <button>
+                        <a href={`/`}>Back</a>
+                    </button>
+                </div>
             </div >
         </>
     )

@@ -7,6 +7,16 @@ h4 {
     font-family: "Lato", sans-serif
 }
 
+.desktop {
+    /*background-image: url('./public/images/home.jpg');
+    background-size: cover; /* Разтяга изображението, за да покрие цялата област */
+    /*background-repeat: no-repeat; /* Изображението няма да се повтаря */
+    /*background-position: center; /* Центрира изображението */
+    background-color: #999;
+    
+}
+
+
 .mySlides {
     display: inline-block;
 }
@@ -83,9 +93,8 @@ h4 {
 }
 
 .w3-content {
-    max-width: 1100px;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    max-width: 1000px;
+    padding: 30px;
 }
 
 .w3-input {
@@ -98,6 +107,15 @@ h4 {
     height: 200px;
 }
 
-.desktop {
-background-color: white;
+.buttons button:nth-child(2){
+    margin-left: 10px;
+    margin-right:  10px;
+}
+
+.buttons button:hover{
+    background-color: lightgreen;
+}
+
+button {
+    border-radius: 0.3em;
 }

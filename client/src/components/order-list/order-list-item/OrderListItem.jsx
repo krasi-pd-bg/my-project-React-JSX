@@ -14,7 +14,7 @@ export default function OrderListItem({
 }) {
     return (
         <>
-            <div className="w3-row-padding" id="about" style={{ marginTop: '10px' }}>
+            <div className="w3-row-padding" id="about" style={{ padding: '10px' }}>
                 <div className="table-wrapper">
                 
                     <h5>Order #{_id}</h5>

@@ -33,7 +33,7 @@ export default function OrderList() {
 
     return (
         <>
-            <div className="w3-row-padding" id="about" style={{ marginTop: '100px' }}>
+            <div className="w3-row-padding" id="about" style={{ marginTop: '10px' }}>
                 <h1>Order List</h1>
                 {orders.length > 0
                     ? < button >
