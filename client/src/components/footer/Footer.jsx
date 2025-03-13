@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <>
-            <footer className="w3-container w3-padding-32 w3-light-grey w3-center">
+            <footer className="w3-container w3-padding-16 w3-light-grey w3-center">
                 
                 <a href="#" className="w3-button w3-black w3-margin"><i className="fa fa-arrow-up w3-margin-right"></i>To the top</a>
                 <h4>Follow us:</h4>
