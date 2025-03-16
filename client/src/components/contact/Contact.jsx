@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-
+import { useNavigate } from "react-router";
 import * as ordersApi from "../../api/orders-api";
 
 
 
 export default function Contact() {
+    const navigate = useNavigate();
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
@@ -37,7 +38,7 @@ export default function Contact() {
         e.preventDefault();
 
        await ordersApi.createOrder((formValues));
-        
+       navigate('/order-list/latest');
         
     };
 
@@ -59,6 +60,9 @@ export default function Contact() {
         <>
             <div className="w3-center w3-padding-24" id="contact">
                 <span className="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-12">Contact Us</span>
+            </div>
+            <div className="w3-center w3-padding-24" id="contact">
+                <span><h3>Request your details and the type of service you need and we will contact you soon as possible</h3></span>
             </div>
 
             <form className="w3-container" action="/action_page.php" target="_blank" onSubmit={formSubmitHandler}>

@@ -7,6 +7,11 @@ h4 {
     font-family: "Lato", sans-serif
 }
 
+div .go-home {
+    text-decoration: none;
+}
+    
+
 .desktop {
     /*background-image: url('./public/images/home.jpg');
     background-size: cover; /* Разтяга изображението, за да покрие цялата област */

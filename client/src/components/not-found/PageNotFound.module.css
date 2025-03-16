@@ -1,0 +1,17 @@
+.main-class {
+
+    min-height: 800px;
+    padding: 300px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.text-center {
+    text-align: center;
+    padding: 1em;
+    border: solid 2px black;
+    border-radius: 0.5em;
+    text-decoration: none;
+}
