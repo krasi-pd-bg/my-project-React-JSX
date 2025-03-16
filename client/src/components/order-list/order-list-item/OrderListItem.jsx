@@ -44,7 +44,7 @@ export default function OrderListItem({
                             {createdAt}
                         </li>
                         <button>
-                            <Link to={`/order-list/${_id}`} >Details</ Link>
+                            <Link to={`/order-list/${_id}`} style={{textDecoration: 'none'}}>Details</ Link>
                         </button>
                     </ul>
                 </div >

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+//import { Link } from "react-router";
 
 //import * as request from "../../api/requester";
 
@@ -37,7 +38,7 @@ export default function OrderList() {
                 <h1>Order List</h1>
                 {orders.length > 0
                     ? < button >
-                        <Link to="/order-list/latest">Latest 3 orders</Link>
+                        <Link to={"/order-list/latest"} style={{textDecoration: 'none'}}>Latest 3 orders</Link>
                     </button>
                     : null
                 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 import ordersApi from "../../api/orders-api.js";
@@ -21,7 +22,7 @@ export default function CurrentOrder() {
         <>
             <div className="w3-row-padding" id="about" style={{ marginTop: '100px' }}>
                 <div className="table-wrapper">
-                    <h3>Current order</h3>
+                    <h3>`Current order - {order.name}'s request'`</h3>
                     <h5>Order #{order._id}</h5>
                     <ul>
                         <li>
@@ -52,13 +53,13 @@ export default function CurrentOrder() {
                 </div >
                 <div className="buttons">
                     <button>
-                        <a href={`/edit-order/${order._id}`}>Edit</a>
+                        <Link to={`/edit-order/${order._id}`} style={{textDecoration: 'none'}}>Edit</Link>
                     </button>
                     <button>
-                        <a href={`/delete-order/${order._id}`}>Delete</a>
+                        Delete
                     </button>
                     <button>
-                        <a href={`/`}>Back</a>
+                        <Link to={`/`} style={{textDecoration: 'none'}}>Back</Link>
                     </button>
                 </div>
             </div >

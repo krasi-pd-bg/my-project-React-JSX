@@ -4,6 +4,7 @@ export default function NotFound() {
     return (
         <>
             <main className={styles['main-class']}>
+            <Link to={"/"} style={{textDecoration: 'none'}}>
                 
                     <div className={styles["text-center"]}>
                         <h1>404</h1>
@@ -14,9 +15,10 @@ export default function NotFound() {
                         Sorry, we couldn’t find the page you’re looking for.
                         </p>
                         <div className="go-home">
-                            <Link to="/" style={{textDecoration: 'none'}}>Go back home</ Link>
+                            Go back home
                         </div>
                     </div>
+            </Link>        
                 
             </main>
         </>
