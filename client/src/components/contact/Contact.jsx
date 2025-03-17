@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router";
+//import { useNavigate } from "react-router";
 import * as ordersApi from "../../api/orders-api";
+import { useNavigate } from "react-router-dom";
 
 
 

@@ -1,22 +1,37 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-
+//import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom"
 import ordersApi from "../../api/orders-api.js";
 
 export default function CurrentOrder() {
+    const navigate = useNavigate();
     const [order, setOrder] = useState({});
     const { orderId } = useParams();
+    console.log(orderId);
 
     useEffect(() => {
         (async () => {
             const result = await ordersApi.getCurrentOrder(orderId);
+            console.log(result);
             setOrder(result);
 
         })();
+    }, [orderId]);
 
-    });
+
+    const deleteOrder = async () => {
+        const hasConfirm = confirm(`Are you sure you want to delete your order #${order._id}?`);
+
+        if (!hasConfirm) {
+            return;
+        }
+
+        await ordersApi.deleteOrder(order._id);
+
+        navigate('/');
+    };
 
     return (
         <>
@@ -55,7 +70,9 @@ export default function CurrentOrder() {
                     <button>
                         <Link to={`/edit-order/${order._id}`} style={{textDecoration: 'none'}}>Edit</Link>
                     </button>
-                    <button>
+                    <button
+                        onClick={deleteOrder}
+                    >
                         Delete
                     </button>
                     <button>

@@ -24,23 +24,28 @@ export const createOrder = async (data) => {
   return result;
 }*/
 
-export const getCurrentOrder = (orderId) => request.get(`${BASE_URL}/${orderId}`);
+export const getCurrentOrder = async (orderId) => {
+  const result = await request.get(`${BASE_URL}/${orderId}`)
+  console.log(`server result: ${result}`);
+  return result;
+}
 
 
 
-/*export const deleteCampaign = async (campaignId) => {
+export const deleteOrder = async (orderId) => {
   try {
-    const result = await requester.del(`${BASE_URL}/delete/${campaignId}`);
-    return result;
+    const result = await request.del(`${BASE_URL}/${orderId}`);
+    return;
   } catch (error) {
-    console.log('Error delete a campaign:', error.message);
-    throw new Error('Unable to delete campaign. Please try again later.');
+    console.log('Error delete a current order:', error.message);
+    throw new Error('Unable to delete current order. Please try again later.');
   }
-}*/
+}
 
 const ordersApi = {
   getAll,
-  getCurrentOrder
+  getCurrentOrder,
+  deleteOrder
 };
 
 export default ordersApi;
