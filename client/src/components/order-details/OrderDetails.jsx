@@ -7,7 +7,7 @@ export default function OrderDetails() {
                 <div className="table-wrapper">
                     <ul>
                         <li>
-                            name
+                            name***
                         </li>
                         <li>
                             email

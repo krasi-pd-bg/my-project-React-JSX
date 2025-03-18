@@ -68,7 +68,7 @@ export default function CurrentOrder() {
                 </div >
                 <div className="buttons">
                     <button>
-                        <Link to={`/edit-order/${order._id}`} style={{textDecoration: 'none'}}>Edit</Link>
+                        <Link to={`/order-list/${order._id}/edit`} style={{textDecoration: 'none'}}>Edit</Link>
                     </button>
                     <button
                         onClick={deleteOrder}
@@ -76,7 +76,7 @@ export default function CurrentOrder() {
                         Delete
                     </button>
                     <button>
-                        <Link to={`/`} style={{textDecoration: 'none'}}>Back</Link>
+                        <Link to={`/order-list`} style={{textDecoration: 'none'}}>Back</Link>
                     </button>
                 </div>
             </div >
