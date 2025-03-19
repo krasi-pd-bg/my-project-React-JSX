@@ -20,14 +20,12 @@ export const createOrder = async (data) => {
 }
 
 export const updateOrder = async (data, campaignId) => {
-  const result = await request.put(`${BASE_URL}/edit/${campaignId}`, data)
-  console.log(result);
+  const result = await request.put(`${BASE_URL}/${campaignId}`, {...data, _id: campaignId})
   return result;
 }
 
 export const getCurrentOrder = async (orderId) => {
   const result = await request.get(`${BASE_URL}/${orderId}`)
-  console.log(`server result: ${result}`);
   return result;
 }
 
