@@ -13,7 +13,7 @@ import Register from "./components/register/Register";
 import CurrentOrder from './components/current-order/CurrentOrder';
 import OrderLatest3 from './components/order-latest-3/OrderLatest3';
 import PageNotFound from './components/not-found/PageNotFound';
-import OrderDetails from './components/order-details/OrderDetails';
+import EditOrder from './components/edit-order/EditOrder';
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/order-list" element={<OrderList />} />
                     <Route path="/order-list/:orderId" element={<CurrentOrder />} />
-                    <Route path="/order-list/:orderId/edit" element={<OrderDetails />} />
+                    <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
                     <Route path="/order-list/latest" element={<OrderLatest3 />} />
                     <Route path="*" element={<PageNotFound />} />
 

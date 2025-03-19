@@ -19,10 +19,11 @@ export const createOrder = async (data) => {
   return result;
 }
 
-/*export const updateOrder = async (data, campaignId) => {
-  const result = await requester.put(`${BASE_URL}/edit/${campaignId}`, data)
+export const updateOrder = async (data, campaignId) => {
+  const result = await request.put(`${BASE_URL}/edit/${campaignId}`, data)
+  console.log(result);
   return result;
-}*/
+}
 
 export const getCurrentOrder = async (orderId) => {
   const result = await request.get(`${BASE_URL}/${orderId}`)
@@ -45,6 +46,7 @@ export const deleteOrder = async (orderId) => {
 const ordersApi = {
   getAll,
   getCurrentOrder,
+  updateOrder,
   deleteOrder
 };
 
