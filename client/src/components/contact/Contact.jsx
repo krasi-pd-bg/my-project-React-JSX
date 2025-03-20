@@ -44,8 +44,7 @@ export default function Contact() {
     };
 
     const changeHandler = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);
+        
         setFormValues(oldValues => ({
             ...oldValues,
             [e.target.name]: e.target.type === 'checkbox'
