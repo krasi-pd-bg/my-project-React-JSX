@@ -1,9 +1,30 @@
+import { Link, useNavigate } from "react-router"
+import { useLogin } from "../../api/authApi"
+import { useActionState, useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
+
 export default function Login() {
+    const navigate = useNavigate();
+    const { userLoginHandler } = useContext(UserContext);
+    const { login } = useLogin();
+
+    const loginHandler = async (_, formData) => {
+        const values = Object.fromEntries(formData);
+
+        const authData = await login(values.email, values.password);
+
+        userLoginHandler(authData);
+
+        navigate('/order-list');
+    };
+    const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
+
+                                                                                                                                   
     return (
         <>
             <div className="w3-row-padding" id="about">
                 <section id="login-page" className="auth">
-                    <form id="login">
+                    <form id="login" action={loginAction}>
 
                         <div className="w3-display-container">
                             <div className="brand-logo"></div>
@@ -13,9 +34,9 @@ export default function Login() {
 
                             <label htmlFor="login-pass">Password:</label>
                             <input type="password" id="login-password" name="password" />
-                            <input type="submit" className="btn-submit" value="Login" />
+                            <input type="submit" className="btn-submit" value="Login" disabled={isPending} />
                             <p className="field">
-                                <span>If you don't have profile click <a href="/register">here</a></span>
+                                <span>If you don't have profile click <Link to="/register">here</ Link></span>
                             </p>
                         </div>
                     </form>
