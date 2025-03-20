@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/userContext';
 
 export default function LinksOnTop() {
+  const { email } = useContext(UserContext);
   return (
     <>
       <div className="w3-top">
@@ -31,7 +34,7 @@ export default function LinksOnTop() {
           </div>
           <div className="w3-col s1">
             <div className="userName">
-              Pesho's profile
+              {email}
             </div>
           </div>
         </div>

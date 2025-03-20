@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react'
+import { useState } from 'react';
+import { UserContext } from './contexts/userContext';
 
 import LinksOnTop from './components/links-on-top/LinksOnTop'
 import Content from './components/content/Content'
@@ -17,32 +19,39 @@ import EditOrder from './components/edit-order/EditOrder';
 
 
 function App() {
+    const [authData, setAuthData] = useState({});
+
+    const userLoginHandler = (resultData) => {
+        setAuthData(resultData);
+    };
 
 
     return (
-        <div className="desktop">
-            <LinksOnTop />
-            <div className="w3-content">
+        <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+            <div className="desktop">
+                <LinksOnTop />
+                <div className="w3-content">
 
-                <Routes>
+                    <Routes>
 
-                    <Route path="/" element={<Content />} />
-                    <Route path="/plans" element={<Plans />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/order-list" element={<OrderList />} />
-                    <Route path="/order-list/:orderId" element={<CurrentOrder />} />
-                    <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
-                    <Route path="/order-list/latest" element={<OrderLatest3 />} />
-                    <Route path="*" element={<PageNotFound />} />
+                        <Route path="/" element={<Content />} />
+                        <Route path="/plans" element={<Plans />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/order-list" element={<OrderList />} />
+                        <Route path="/order-list/:orderId" element={<CurrentOrder />} />
+                        <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
+                        <Route path="/order-list/latest" element={<OrderLatest3 />} />
+                        <Route path="*" element={<PageNotFound />} />
 
-                </Routes>
+                    </Routes>
+                </div>
+
+                <Footer />
             </div>
-
-            <Footer />
-        </div>
+        </ UserContext.Provider>
     )
 }
 
