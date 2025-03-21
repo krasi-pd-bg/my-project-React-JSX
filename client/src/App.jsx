@@ -16,6 +16,7 @@ import CurrentOrder from './components/current-order/CurrentOrder';
 import OrderLatest3 from './components/order-latest-3/OrderLatest3';
 import PageNotFound from './components/not-found/PageNotFound';
 import EditOrder from './components/edit-order/EditOrder';
+import Logout from './components/logout/Logout';
 
 
 function App() {
@@ -24,10 +25,13 @@ function App() {
     const userLoginHandler = (resultData) => {
         setAuthData(resultData);
     };
+    const userLogoutHandler = () => {
+        setAuthData({});
+    };
 
 
     return (
-        <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+        <UserContext.Provider value={{ ...authData, userLoginHandler, userLogoutHandler }}>
             <div className="desktop">
                 <LinksOnTop />
                 <div className="w3-content">
@@ -44,6 +48,7 @@ function App() {
                         <Route path="/order-list/:orderId" element={<CurrentOrder />} />
                         <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
                         <Route path="/order-list/latest" element={<OrderLatest3 />} />
+                        <Route path="/logout" element={<Logout />} />
                         <Route path="*" element={<PageNotFound />} />
 
                     </Routes>

@@ -30,7 +30,7 @@ export default function LinksOnTop() {
             <Link to="/register" className="w3-button w3-block">Register</Link>
           </div>
           <div className="w3-col s1">
-            <Link to="/" className="w3-button w3-block">Logout</Link>
+            <Link to="/logout" className="w3-button w3-block">Logout</Link>
           </div>
           <div className="w3-col s1">
             <div className="userName">
