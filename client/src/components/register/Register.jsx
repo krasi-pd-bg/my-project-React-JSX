@@ -1,11 +1,38 @@
 import { Link } from "react-router"
+import { useContext } from "react";
+import { useRegister } from "../../api/authApi";
+
+import { UserContext } from "../../contexts/userContext";
+import { useNavigate } from "react-router";
 
 export default function Register() {
+
+    const navigate = useNavigate();
+    const { register } = useRegister();
+    const { userLoginHandler } = useContext(UserContext)
+
+    const registerHandler = async (formData) => {
+        const { email, password } = Object.fromEntries(formData);
+
+        const confirmPassword = formData.get('confirm-password');
+
+        if (password !== confirmPassword) {
+            console.log('Password miss match');
+
+            return;
+        }
+
+        const authData = await register(email, password);
+
+        userLoginHandler(authData);
+
+        navigate('/');
+    }
     return (
         <>
             <div className="w3-row-padding" id="about">
                 <section id="register-page" className="content auth">
-                    <form id="register">
+                    <form id="register" action={registerHandler}>
                         <div className="w3-display-container">
                             <div className="brand-logo"></div>
                             <h1>Register</h1>

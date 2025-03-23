@@ -28,7 +28,9 @@ export const useLogin = () => {
 
 export const useRegister = () => {
     const register = (email, password) =>
-        request.post(`${baseUrl}/register`, { email, password });
+        request.post(
+            `${baseUrl}/register`,
+            { email, password });
 
     return {
         register,
@@ -40,6 +42,7 @@ export const useLogout = () => {
 
     useEffect(() => {
         if (!accessToken) {
+            console.log("no access token");
             return;
         }
 
