@@ -19,7 +19,7 @@ export default function Login() {
     };
     const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
-                                                                                                                                   
+
     return (
         <>
             <div className="w3-row-padding" id="about">
@@ -33,7 +33,7 @@ export default function Login() {
                             <input type="email" id="email" name="email" placeholder="maria@gmail.com" />
 
                             <label htmlFor="login-pass">Password:</label>
-                            <input type="password" id="login-password" name="password" />
+                            <input type="password" id="login-pass" name="password" />
                             <input type="submit" className="btn-submit" value="Login" disabled={isPending} />
                             <p className="field">
                                 <span>If you don't have profile click <Link to="/register">here</ Link></span>
