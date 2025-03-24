@@ -46,7 +46,7 @@ export const useLogout = () => {
             console.log("no access token");
             return;
         }
-
+        console.log(accessToken);
         const options = {
             headers: {
                 'X-Authorization': accessToken,

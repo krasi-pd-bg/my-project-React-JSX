@@ -1,7 +1,7 @@
 
 
-async function requester(method, url, data) {
-    const options = {};
+async function requester(method, url, data, options = {}) {
+    //const options = {};
     //const token = localStorage.getItem('token');   
 
     if (method !== 'GET') {
@@ -9,24 +9,38 @@ async function requester(method, url, data) {
     }
 
     if (data) {
-        options.headers = {
-            ...options.headers,
-            'Content-Type': 'application/json'
-        };
+        // options.headers = {
+        //     ...options.headers,
+        //     'Content-Type': 'application/json'
+        // };
 
-        options.body = JSON.stringify(data)
+        // options.body = JSON.stringify(data)
+        options = {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers,
+            },
+            body: JSON.stringify(data),
+        }
     }
+
+    
     const response = await fetch(url, options);
 
-    if (response.status === 204) {
+    // if (response.status === 204) {
+    //     return;
+    // }
+    const responseContentType = response.headers.get('Content-Type');
+    if (!responseContentType) {
         return;
     }
 
     const result = await response.json();
 
-    if (!response.ok) {
-        throw result;
-    }
+    // if (!response.ok) {
+    //     throw result;
+    // }
 
     return result;
 }
