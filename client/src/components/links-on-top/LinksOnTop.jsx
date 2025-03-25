@@ -20,18 +20,31 @@ export default function LinksOnTop() {
           <div className="w3-col s1">
             <Link to="/contact" className="w3-button w3-block">Contact</Link>
           </div>
-          <div className="w3-col s1">
-            <Link to="/order-list" className="w3-button w3-block">Order List</Link>
-          </div>
-          <div className="w3-col s1">
-            <Link to="/login" className='w3-button w3-block'>Login</ Link>
-          </div>
-          <div className="w3-col s1">
-            <Link to="/register" className="w3-button w3-block">Register</Link>
-          </div>
-          <div className="w3-col s1">
-            <Link to="/logout" className="w3-button w3-block">Logout</Link>
-          </div>
+
+          {email
+            ? (
+              <>
+                <div className="w3-col s1">
+                  <Link to="/order-list" className="w3-button w3-block">Order List</Link>
+                </div>
+                <div className="w3-col s1">
+                  <Link to="/logout" className="w3-button w3-block">Logout</Link>
+                </div>
+              </>
+            )
+            : (
+              <>
+                <div className="w3-col s1">
+                  <Link to="/login" className='w3-button w3-block'>Login</ Link>
+                </div>
+                <div className="w3-col s1">
+                  <Link to="/register" className="w3-button w3-block">Register</Link>
+                </div>
+              </>
+            )
+          }
+
+
           <div className="w3-col s1">
             <div className="userName">
               {email}
