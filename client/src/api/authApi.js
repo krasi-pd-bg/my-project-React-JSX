@@ -22,9 +22,15 @@ export const useLogin = () => {
         return () => abortController.abort();
     }, []);
 
-    return {
-        login,
+    
+    try {
+        return {
+            login,
+        }
+    } catch (error) {
+        return error.message;
     }
+    
 };
 
 export const useRegister = () => {
