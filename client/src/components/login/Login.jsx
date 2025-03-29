@@ -11,22 +11,23 @@ export default function Login() {
     const loginHandler = async (_, formData) => {
         const values = Object.fromEntries(formData);
         console.log(values.email, values.password);
-        if (!values.email ||!values.password) {
+        if (!values.email || !values.password) {
             return alert("All fields are required");
         }
 
-        
-        try {
             const authData = await login(values.email, values.password);
+            console.log(authData);
+            if (authData.code === 403) {
+                alert(authData.message);
+                navigate('/login');
+                return;
+            }
 
         userLoginHandler(authData);
 
         navigate('/order-list');
-        } catch (error) {
-            console.log(error);
-            navigate('/login');
-        }
-    };
+        
+        };
     const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
 
