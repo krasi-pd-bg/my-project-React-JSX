@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import * as request from "./requester";
+import { UserContext } from "../contexts/userContext";
 
-const BASE_URL = 'http://localhost:3030/jsonstore/repairs';
+//const BASE_URL = 'http://localhost:3030/jsonstore/repairs';
+const BASE_URL = 'http://localhost:3030/data/repairs';
 
 export const getAll = async () => {
   try {
@@ -20,7 +23,7 @@ export const createOrder = async (data) => {
 }
 
 export const updateOrder = async (data, campaignId) => {
-  const result = await request.put(`${BASE_URL}/${campaignId}`, {...data, _id: campaignId})
+  const result = await request.put(`${BASE_URL}/${campaignId}`, { ...data, _id: campaignId })
   return result;
 }
 
@@ -49,3 +52,17 @@ const ordersApi = {
 };
 
 export default ordersApi;
+
+export const useCreateOrder = () => {
+  const { accessToken } = useContext(UserContext);
+  const options = {
+    headers: {
+      'X-Authorization': accessToken,
+    },
+  }
+  const createOrder = (data) =>
+    request.post(BASE_URL, data, options);
+  return {
+    createOrder,
+  }
+}

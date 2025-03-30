@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 //import { useNavigate } from "react-router";
 import * as ordersApi from "../../api/orders-api";
 import { useNavigate } from "react-router-dom";
+import { useCreateOrder } from "../../api/orders-api";
 
 
 
 export default function Contact() {
     const navigate = useNavigate();
+    const { createOrder } = useCreateOrder();
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
@@ -38,7 +40,8 @@ export default function Contact() {
     const formSubmitHandler = async (e) => {
         e.preventDefault();
 
-       await ordersApi.createOrder((formValues));
+       //await ordersApi.createOrder((formValues));
+       await createOrder(formValues);
        navigate('/order-list/latest');
         
     };
