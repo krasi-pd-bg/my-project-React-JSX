@@ -21,15 +21,11 @@ export const useLogin = () => {
 
         return () => abortController.abort();
     }, []);
-
     
-    try {
-        return {
+            return {
             login,
         }
-    } catch (error) {
-        return error.message;
-    }
+    
     
 };
 

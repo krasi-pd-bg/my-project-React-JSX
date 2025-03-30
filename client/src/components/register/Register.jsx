@@ -12,13 +12,17 @@ export default function Register() {
     const { userLoginHandler } = useContext(UserContext)
 
     const registerHandler = async (formData) => {
-        const { email, password } = Object.fromEntries(formData);
+        const { email, password, rePassword } = Object.fromEntries(formData);
+        console.log(Object.fromEntries(formData));
 
-        const confirmPassword = formData.get('confirm-password');
+        //const confirmPassword = formData.get('confirm-password');
 
-        if (password !== confirmPassword) {
-            console.log('Password miss match');
-
+        if (password !== rePassword) {
+            alert('Passwords do not match');
+            return;
+        }
+        if (!password || !email || !rePassword) {
+            alert('All fields are required');
             return;
         }
 
@@ -44,7 +48,7 @@ export default function Register() {
                             <input type="password" name="password" id="register-password" />
 
                             <label htmlFor="con-pass">Confirm Password:</label>
-                            <input type="password" name="confirm-password" id="confirm-password" />
+                            <input type="password" name="rePassword" id="confirm-password" />
 
                             <input className="btn-submit" type="submit" value="Register" />
 
