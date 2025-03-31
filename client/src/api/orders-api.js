@@ -5,22 +5,22 @@ import { UserContext } from "../contexts/userContext";
 //const BASE_URL = 'http://localhost:3030/jsonstore/repairs';
 const BASE_URL = 'http://localhost:3030/data/repairs';
 
-export const getAll = async () => {
-  try {
-    const result = await request.get(BASE_URL);
-    const orders = Object.values(result);
-    return orders;
+// export const getAll = async () => {
+//   try {
+//     const result = await request.get(BASE_URL);
+//     const orders = Object.values(result);
+//     return orders;
 
-  } catch (error) {
-    console.log(error.message);
-    throw new Error('Unable to fetch orders. Please try again later.');
-  }
-};
+//   } catch (error) {
+//     console.log(error.message);
+//     throw new Error('Unable to fetch orders. Please try again later.');
+//   }
+// };
 
-export const createOrder = async (data) => {
-  const result = await request.post(`${BASE_URL}`, data)
-  return result;
-}
+// export const createOrder = async (data) => {
+//   const result = await request.post(`${BASE_URL}`, data)
+//   return result;
+// }
 
 export const updateOrder = async (data, campaignId) => {
   const result = await request.put(`${BASE_URL}/${campaignId}`, { ...data, _id: campaignId })
@@ -45,7 +45,7 @@ export const deleteOrder = async (orderId) => {
 }
 
 const ordersApi = {
-  getAll,
+  
   getCurrentOrder,
   updateOrder,
   deleteOrder

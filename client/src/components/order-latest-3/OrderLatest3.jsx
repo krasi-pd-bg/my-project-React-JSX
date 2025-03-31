@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Latest from "./Latest.jsx";
 
-import ordersApi from "../../api/orders-api.js";
+import { useGetAll } from "../../api/orders-api.js";
 
 export default function OrderLatest3() {
-    const [latest, setLatest] = useState([]);
+    const { orders } = useGetAll();
+    const latest = orders.reverse().slice(0, 3);
+    // const [latest, setLatest] = useState([]);
 
-    useEffect(() => {
-        (async () => {
-            const result = await ordersApi.getAll();
-            setLatest(result.reverse().slice(0, 3));
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await ordersApi.getAll();
+    //         setLatest(result.reverse().slice(0, 3));
 
-        })();
+    //     })();
 
-    }, []);
+    // }, []);
     console.log(latest)
 
     return (
