@@ -65,6 +65,19 @@ export const useGetAll = () => {
   };
 };
 
+export const useGetCurrentOrder = (orderId) => {
+  const [order, setCurrentOrder] = useState({});
+
+  useEffect(() => {
+    request.get(`${BASE_URL}/${orderId}`)
+   .then(setCurrentOrder)
+  }, [orderId]);
+  return {
+    order,
+  };
+
+};
+
 export const useCreateOrder = () => {
   const { accessToken } = useContext(UserContext);
   const options = {

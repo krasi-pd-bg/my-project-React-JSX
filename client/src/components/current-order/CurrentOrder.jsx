@@ -3,22 +3,21 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 //import { useNavigate } from "react-router";
 import { useNavigate } from "react-router-dom"
-import ordersApi from "../../api/orders-api.js";
+import ordersApi, { useGetCurrentOrder } from "../../api/orders-api.js";
 
 export default function CurrentOrder() {
     const navigate = useNavigate();
-    const [order, setOrder] = useState({});
     const { orderId } = useParams();
-    console.log(orderId);
+    const { order } = useGetCurrentOrder(orderId);
 
-    useEffect(() => {
-        (async () => {
-            const result = await ordersApi.getCurrentOrder(orderId);
-            console.log(result);
-            setOrder(result);
-
-        })();
-    }, [orderId]);
+    
+    //const [order, setOrder] = useState({});
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await ordersApi.getCurrentOrder(orderId);
+    //         setOrder(result);
+    //     })();
+    // }, [orderId]);
 
 
     const deleteOrder = async () => {
