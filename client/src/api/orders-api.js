@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as request from "./requester";
 import { UserContext } from "../contexts/userContext";
 
@@ -53,6 +53,18 @@ const ordersApi = {
 
 export default ordersApi;
 
+export const useGetAll = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    request.get(`${BASE_URL}`)
+    .then(setOrders)
+  }, []);
+  return {
+    orders,
+  };
+};
+
 export const useCreateOrder = () => {
   const { accessToken } = useContext(UserContext);
   const options = {
@@ -65,4 +77,4 @@ export const useCreateOrder = () => {
   return {
     createOrder,
   }
-}
+};

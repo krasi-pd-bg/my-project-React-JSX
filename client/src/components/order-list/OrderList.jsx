@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //import { Link } from "react-router";
-
 //import * as request from "../../api/requester";
-
 import * as ordersApi from "../../api/orders-api.js";
-
 import OrderListItem from "./order-list-item/OrderListItem.jsx";
+import { useGetAll } from "../../api/orders-api.js"; 
 
 
 export default function OrderList() {
-    const [orders, setOrders] = useState([]);
+    const { orders } = useGetAll();
+    //const [orders, setOrders] = useState([]);
     /* useEffect(() => {
          (async () => {
            //const ordersResult = await requester('GET', 'http://localhost:3030/jsonstore/repairs');
@@ -25,12 +24,12 @@ export default function OrderList() {
             
     }, []);   */
 
-    useEffect(() => {
-        (async () => {
-            const result = await ordersApi.getAll();
-            setOrders(result);
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await ordersApi.getAll();
+    //         setOrders(result);
+    //     })();
+    // }, []);
 
     return (
         <>
