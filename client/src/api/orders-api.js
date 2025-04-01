@@ -108,13 +108,15 @@ export const useUpdateOrder = () => {
 
 export const useDeleteOrder = () => {
   const { accessToken } = useContext(UserContext);
+  console.log(accessToken);
   const options = {
     headers: {
       'X-Authorization': accessToken,
     },
   }
+  console.log(options);
   const deleteOrder = (orderId) =>
-    request.del(`${BASE_URL}/${orderId}`, options);
+    request.del(`${BASE_URL}/${orderId}`, null, options);
   return {
     deleteOrder,
   }
