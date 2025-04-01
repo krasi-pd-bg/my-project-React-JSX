@@ -22,15 +22,15 @@ const BASE_URL = 'http://localhost:3030/data/repairs';
 //   return result;
 // }
 
-export const updateOrder = async (data, campaignId) => {
-  const result = await request.put(`${BASE_URL}/${campaignId}`, { ...data, _id: campaignId })
-  return result;
-}
+// export const updateOrder = async (data, campaignId) => {
+//   const result = await request.put(`${BASE_URL}/${campaignId}`, { ...data, _id: campaignId })
+//   return result;
+// }
 
-export const getCurrentOrder = async (orderId) => {
-  const result = await request.get(`${BASE_URL}/${orderId}`)
-  return result;
-}
+// export const getCurrentOrder = async (orderId) => {
+//   const result = await request.get(`${BASE_URL}/${orderId}`)
+//   return result;
+// }
 
 
 
@@ -46,8 +46,8 @@ export const deleteOrder = async (orderId) => {
 
 const ordersApi = {
   
-  getCurrentOrder,
-  updateOrder,
+  //getCurrentOrder,
+  //updateOrder,
   deleteOrder
 };
 
@@ -89,5 +89,19 @@ export const useCreateOrder = () => {
     request.post(BASE_URL, data, options);
   return {
     createOrder,
+  }
+};
+
+export const useUpdateOrder = () => {
+  const { accessToken } = useContext(UserContext);
+  const options = {
+    headers: {
+      'X-Authorization': accessToken,
+    },
+  }
+  const updateOrder = (data, campaignId) =>
+    request.put(`${BASE_URL}/${campaignId}`, {...data, _id: campaignId }, options);
+  return {
+    updateOrder,
   }
 };

@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import ordersApi from '../../api/orders-api';
+import { useGetCurrentOrder, useUpdateOrder } from '../../api/orders-api';
 
 export default function EditOrder() {
     const navigate = useNavigate();
     const { orderId } = useParams();
-    const [order, setOrder] = useState({});
+    const { order } = useGetCurrentOrder(orderId);
+    const { updateOrder } = useUpdateOrder();
+    
 
-    useEffect(() => {
-        ordersApi.getCurrentOrder(orderId)
-            .then((data) => setOrder(data))
-    }, [orderId]);
+
+    //const [order, setOrder] = useState({});
+
+    // useEffect(() => {
+    //     ordersApi.getCurrentOrder(orderId)
+    //         .then((data) => setOrder(data))
+    // }, [orderId]);
 
     const formAction = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const orderData = Object.fromEntries(formData);
 
-        await ordersApi.updateOrder(orderData, orderId);
+        //await ordersApi.updateOrder(orderData, orderId);
+        await updateOrder(orderData, orderId);
 
         navigate(`/order-list/${orderId}`);
     }
