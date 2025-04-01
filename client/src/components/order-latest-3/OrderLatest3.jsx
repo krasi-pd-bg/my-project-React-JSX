@@ -18,7 +18,7 @@ export default function OrderLatest3() {
     //     })();
 
     // }, []);
-    console.log(latest)
+    
 
     return (
         <>
