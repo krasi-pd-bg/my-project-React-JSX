@@ -34,24 +34,24 @@ const BASE_URL = 'http://localhost:3030/data/repairs';
 
 
 
-export const deleteOrder = async (orderId) => {
-  try {
-    const result = await request.del(`${BASE_URL}/${orderId}`);
-    return;
-  } catch (error) {
-    console.log('Error delete a current order:', error.message);
-    throw new Error('Unable to delete current order. Please try again later.');
-  }
-}
+// export const deleteOrder = async (orderId) => {
+//   try {
+//     const result = await request.del(`${BASE_URL}/${orderId}`);
+//     return;
+//   } catch (error) {
+//     console.log('Error delete a current order:', error.message);
+//     throw new Error('Unable to delete current order. Please try again later.');
+//   }
+// }
 
-const ordersApi = {
-  
-  //getCurrentOrder,
-  //updateOrder,
-  deleteOrder
-};
+// const ordersApi = {
+//   //getAll,
+//   //getCurrentOrder,
+//   //updateOrder,
+//   //deleteOrder
+// };
 
-export default ordersApi;
+// export default ordersApi;
 
 export const useGetAll = () => {
   const [orders, setOrders] = useState([]);
@@ -103,5 +103,19 @@ export const useUpdateOrder = () => {
     request.put(`${BASE_URL}/${campaignId}`, {...data, _id: campaignId }, options);
   return {
     updateOrder,
+  }
+};
+
+export const useDeleteOrder = () => {
+  const { accessToken } = useContext(UserContext);
+  const options = {
+    headers: {
+      'X-Authorization': accessToken,
+    },
+  }
+  const deleteOrder = (orderId) =>
+    request.del(`${BASE_URL}/${orderId}`, options);
+  return {
+    deleteOrder,
   }
 };
