@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 //import { useNavigate } from "react-router";
 import { useNavigate } from "react-router-dom"
 import { useDeleteOrder, useGetCurrentOrder } from "../../api/orders-api.js";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext.js";
 
 export default function CurrentOrder() {
     const navigate = useNavigate();
+    const { _id: userId } = useContext(UserContext);
     const { orderId } = useParams();
     const { order } = useGetCurrentOrder(orderId);
     const { deleteOrder } = useDeleteOrder();
@@ -33,6 +36,8 @@ export default function CurrentOrder() {
 
         navigate('/');
     };
+
+    const isOwner = userId === order._ownerId;
 
     return (
         <>
@@ -68,7 +73,9 @@ export default function CurrentOrder() {
                     </ul>
                 </div >
                 <div className="buttons">
-                    <button>
+                    {isOwner && (
+                        <>
+                        <button>
                         <Link to={`/order-list/${order._id}/edit`} style={{textDecoration: 'none'}}>Edit</Link>
                     </button>
                     <button
@@ -76,6 +83,9 @@ export default function CurrentOrder() {
                     >
                         Delete
                     </button>
+                    </>
+                    )}
+                    
                     <button>
                         <Link to={`/order-list`} style={{textDecoration: 'none'}}>Back</Link>
                     </button>
