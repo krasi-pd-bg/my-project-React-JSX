@@ -17,10 +17,11 @@ import OrderLatest3 from './components/order-latest-3/OrderLatest3';
 import PageNotFound from './components/not-found/PageNotFound';
 import EditOrder from './components/edit-order/EditOrder';
 import Logout from './components/logout/Logout';
+import usePersistedState from './hooks/usePersistedState';
 
 
 function App() {
-    const [authData, setAuthData] = useState({});
+    const [authData, setAuthData] = usePersistedState({});
 
     const userLoginHandler = (resultData) => {
         setAuthData(resultData);
