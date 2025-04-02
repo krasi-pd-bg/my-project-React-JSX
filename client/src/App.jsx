@@ -18,6 +18,7 @@ import PageNotFound from './components/not-found/PageNotFound';
 import EditOrder from './components/edit-order/EditOrder';
 import Logout from './components/logout/Logout';
 import usePersistedState from './hooks/usePersistedState';
+import AuthGuard from './guards/AuthGuard';
 
 
 function App() {
@@ -45,11 +46,14 @@ function App() {
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/order-list" element={<OrderList />} />
-                        <Route path="/order-list/:orderId" element={<CurrentOrder />} />
-                        <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
-                        <Route path="/order-list/latest" element={<OrderLatest3 />} />
-                        <Route path="/logout" element={<Logout />} />
+                        <Route element={<AuthGuard />}>
+                            <Route path="/order-list" element={<OrderList />} />
+                            <Route path="/order-list/:orderId" element={<CurrentOrder />} />
+                            <Route path="/order-list/:orderId/edit" element={<EditOrder />} />
+                            <Route path="/order-list/latest" element={<OrderLatest3 />} />
+                            <Route path="/logout" element={<Logout />} />
+                        </Route>
+
                         <Route path="*" element={<PageNotFound />} />
 
                     </Routes>
