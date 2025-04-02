@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react'
-import { useState } from 'react';
+
 import { UserContext } from './contexts/userContext';
 
 import LinksOnTop from './components/links-on-top/LinksOnTop'
@@ -44,12 +44,12 @@ function App() {
                         <Route path="/" element={<Content />} />
                         <Route path="/plans" element={<Plans />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/contact" element={<Contact />} />
                         <Route element={<GuestGuard />}>
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                         </Route>
                         <Route element={<AuthGuard />}>
+                            <Route path="/contact" element={<Contact />} />
                             <Route path="/order-list" element={<OrderList />} />
                             <Route path="/order-list/:orderId" element={<CurrentOrder />} />
                             <Route path="/order-list/:orderId/edit" element={<EditOrder />} />

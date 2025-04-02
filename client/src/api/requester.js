@@ -1,20 +1,14 @@
 
 
 async function requester(method, url, data, options = {}) {
-    //const options = {};
-    //const token = localStorage.getItem('token');   
+    
 
     if (method !== 'GET') {
         options.method = method;
     }
 
     if (data) {
-        // options.headers = {
-        //     ...options.headers,
-        //     'Content-Type': 'application/json'
-        // };
-
-        // options.body = JSON.stringify(data)
+        
         options = {
             ...options,
             headers: {
@@ -38,10 +32,6 @@ async function requester(method, url, data, options = {}) {
 
     const result = await response.json();
 
-    // if (!response.ok) {
-    //     throw result;
-    // }
-
     return result;
 }
 
@@ -50,10 +40,3 @@ export const post = requester.bind(null, 'POST');
 export const put = requester.bind(null, 'PUT');
 export const del = requester.bind(null, 'DELETE');
 
-/*export default {
-    get,
-    post,
-    put,
-    del
-};
-*/
