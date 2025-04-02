@@ -19,6 +19,7 @@ import EditOrder from './components/edit-order/EditOrder';
 import Logout from './components/logout/Logout';
 import usePersistedState from './hooks/usePersistedState';
 import AuthGuard from './guards/AuthGuard';
+import GuestGuard from './guards/GuestGuard';
 
 
 function App() {
@@ -44,8 +45,10 @@ function App() {
                         <Route path="/plans" element={<Plans />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                        <Route element={<GuestGuard />}>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
                         <Route element={<AuthGuard />}>
                             <Route path="/order-list" element={<OrderList />} />
                             <Route path="/order-list/:orderId" element={<CurrentOrder />} />
